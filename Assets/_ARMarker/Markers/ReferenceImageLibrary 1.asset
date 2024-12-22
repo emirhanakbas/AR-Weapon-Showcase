@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary 1
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5737558098631943787
+  m_GuidHigh: 16838580055130428065
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5003300419356948619
+      m_GuidHigh: 5873009555067802260
+    m_SerializedTextureGuid:
+      m_GuidLow: 9720034737849061744
+      m_GuidHigh: 18039237719504004728
+    m_Size: {x: 0.26458332, y: 0.26458332}
+    m_SpecifySize: 1
+    m_Name: M4A1
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5337855742832967458
+      m_GuidHigh: 3051441616233865914
+    m_SerializedTextureGuid:
+      m_GuidLow: 2045775193891607648
+      m_GuidHigh: 10242207443118076379
+    m_Size: {x: 0.2645833, y: 0.2645833}
+    m_SpecifySize: 1
+    m_Name: AK-47
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5533437261619295254
+      m_GuidHigh: 7009903513424509056
+    m_SerializedTextureGuid:
+      m_GuidLow: 14601965179252187254
+      m_GuidHigh: 16097463483566282825
+    m_Size: {x: 0.2645833, y: 0.2645833}
+    m_SpecifySize: 1
+    m_Name: SKORPION VZ
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5355581418335846461
+      m_GuidHigh: 6169643431921593259
+    m_SerializedTextureGuid:
+      m_GuidLow: 15137997147527118688
+      m_GuidHigh: 467032109319052826
+    m_Size: {x: 0.2645833, y: 0.2645833}
+    m_SpecifySize: 1
+    m_Name: UMP-45
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5559883533950746637
+      m_GuidHigh: 634820966648039846
+    m_SerializedTextureGuid:
+      m_GuidLow: 13854361827295314457
+      m_GuidHigh: 11388779770487996507
+    m_Size: {x: 0.2645833, y: 0.2645833}
+    m_SpecifySize: 1
+    m_Name: SMOKE GRENADE
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5066450850180844510
+      m_GuidHigh: 6514306404169297302
+    m_SerializedTextureGuid:
+      m_GuidLow: 7756566884285908821
+      m_GuidHigh: 13359064384849182683
+    m_Size: {x: 0.2645833, y: 0.2645833}
+    m_SpecifySize: 1
+    m_Name: P90
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4903365017932428855
+      m_GuidHigh: 7101242621088441518
+    m_SerializedTextureGuid:
+      m_GuidLow: 17659776293078473447
+      m_GuidHigh: 11181268290673265610
+    m_Size: {x: 0.2645833, y: 0.2645833}
+    m_SpecifySize: 1
+    m_Name: PISTOL 92
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4955380774072312488
+      m_GuidHigh: 5383409111696481428
+    m_SerializedTextureGuid:
+      m_GuidLow: 8008608812606929596
+      m_GuidHigh: 14694104863153861576
+    m_Size: {x: 0.2645833, y: 0.2645833}
+    m_SpecifySize: 1
+    m_Name: MODERN RUSSIAN AR
+    m_Texture: {fileID: 0}
