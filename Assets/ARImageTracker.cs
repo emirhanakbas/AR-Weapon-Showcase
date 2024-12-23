@@ -16,6 +16,8 @@ public class ARImageTracker : MonoBehaviour
     public WeaponData[] weapons;                     // QR code - prefab match-up.
     public Button rotateLeftButton;                  // Rotate Left button.
     public Button rotateRightButton;                 // Rotate Right button.
+    public Button rotateUpButton;                    // Rotate Up button.
+    public Button rotateDownButton;                  // Rotate Down button.
     public Button zoomInButton;                      // Zoom In button.
     public Button zoomOutButton;                     // Zoom Out button.
     public float rotationSpeed = 10f;                // Rotation speed.
@@ -29,6 +31,8 @@ public class ARImageTracker : MonoBehaviour
         trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
         rotateLeftButton.onClick.AddListener(RotateLeft);
         rotateRightButton.onClick.AddListener(RotateRight);
+        rotateUpButton.onClick.AddListener(RotateUp); 
+        rotateDownButton.onClick.AddListener(RotateDown); 
         zoomInButton.onClick.AddListener(ZoomIn);
         zoomOutButton.onClick.AddListener(ZoomOut);
     }
@@ -38,20 +42,20 @@ public class ARImageTracker : MonoBehaviour
         trackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
         rotateLeftButton.onClick.RemoveListener(RotateLeft);
         rotateRightButton.onClick.RemoveListener(RotateRight);
+        rotateUpButton.onClick.RemoveListener(RotateUp); 
+        rotateDownButton.onClick.RemoveListener(RotateDown); 
         zoomInButton.onClick.RemoveListener(ZoomIn);
         zoomOutButton.onClick.RemoveListener(ZoomOut);
     }
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs args)
     {
-        // Newly detected QR codes.
         foreach (var trackedImage in args.added)
         {
-            RemoveAllWeapons(); // Remove all available weapons. 
+            RemoveAllWeapons();
             SpawnWeapon(trackedImage);
         }
 
-        // Updated QR codes.
         foreach (var trackedImage in args.updated)
         {
             if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
@@ -60,7 +64,6 @@ public class ARImageTracker : MonoBehaviour
             }
         }
 
-        // Lost QR codes tracking.
         foreach (var trackedImage in args.removed)
         {
             RemoveWeapon(trackedImage);
@@ -71,23 +74,15 @@ public class ARImageTracker : MonoBehaviour
     {
         string qrCodeName = trackedImage.referenceImage.name;
 
-        // Find weapon prefab.
         foreach (var weapon in weapons)
         {
             if (weapon.qrCodeName == qrCodeName)
             {
                 if (!spawnedWeapons.ContainsKey(qrCodeName))
                 {
-                    // Create the prefab and adjust the position, rotation, size.
                     currentWeapon = Instantiate(weapon.weaponPrefab, trackedImage.transform.position, Quaternion.identity);
-
-                    // Perpendicular to the QR code.
                     currentWeapon.transform.rotation = Quaternion.LookRotation(-trackedImage.transform.up);
-
-                    // Size
-                    currentWeapon.transform.localScale = Vector3.one * 0.5f; // 0.5f halve the size.
-
-                    // Make Prefab QR's child. 
+                    currentWeapon.transform.localScale = Vector3.one * 0.5f;
                     currentWeapon.transform.SetParent(trackedImage.transform);
 
                     spawnedWeapons.Add(qrCodeName, currentWeapon);
@@ -124,39 +119,51 @@ public class ARImageTracker : MonoBehaviour
         spawnedWeapons.Clear();
     }
 
-    // Rotate Left function
     public void RotateLeft()
     {
         if (currentWeapon != null)
         {
-            currentWeapon.transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime); // Negatif yönde döndürme
+            currentWeapon.transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
         }
     }
 
-    // Rotate Right function
     public void RotateRight()
     {
         if (currentWeapon != null)
         {
-            currentWeapon.transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime); // Pozitif yönde döndürme
+            currentWeapon.transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         }
     }
 
-    // Zoom in function
+    public void RotateUp()
+    {
+        if (currentWeapon != null)
+        {
+            currentWeapon.transform.Rotate(Vector3.right * -rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    public void RotateDown()
+    {
+        if (currentWeapon != null)
+        {
+            currentWeapon.transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime);
+        }
+    }
+
     public void ZoomIn()
     {
         if (currentWeapon != null)
         {
-            currentWeapon.transform.localScale += Vector3.one * zoomSpeed; // Yakýnlaþtýrma
+            currentWeapon.transform.localScale += Vector3.one * zoomSpeed;
         }
     }
 
-    // Zoom out function
     public void ZoomOut()
     {
         if (currentWeapon != null)
         {
-            currentWeapon.transform.localScale -= Vector3.one * zoomSpeed; // Uzaklaþtýrma
+            currentWeapon.transform.localScale -= Vector3.one * zoomSpeed;
         }
     }
 }
